@@ -1,7 +1,7 @@
 ## ----setup, include = FALSE, cache = FALSE-------------------------------
 library(mlrMBO)
 set.seed(123)
-knitr::opts_chunk$set(cache = TRUE, collapse = FALSE)
+knitr::opts_chunk$set(cache = TRUE, collapse = FALSE, dev = "svg")
 knitr::knit_hooks$set(document = function(x){
   gsub("```\n*```r*\n*", "", x)
 })
@@ -14,6 +14,18 @@ obj.fun = makeCosineMixtureFunction(1)
 obj.fun = convertToMinimization(obj.fun)
 print(obj.fun)
 ggplot2::autoplot(obj.fun)
+
+## ----smoof_custom_objective----------------------------------------------
+makeSingleObjectiveFunction(
+  name = "my_sphere",
+  fn = function(x) {
+    sum(x*x) + 7
+  },
+  par.set = makeParamSet(
+    makeNumericVectorParam("x", len = 2L, lower = -5, upper = 5)
+  ),
+  minimize = TRUE
+)
 
 ## ------------------------------------------------------------------------
 des = generateDesign(n = 5, par.set = getParamSet(obj.fun), fun = lhs::randomLHS)
