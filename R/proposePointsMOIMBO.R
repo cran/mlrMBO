@@ -48,7 +48,7 @@ proposePointsMOIMBO = function(opt.state, ...) {
   control = getOptProblemControl(opt.problem)
   opt.path = getOptStateOptPath(opt.state)
 
-  requirePackages("emoa", why = "multipoint InfillOpt MOI-MBO")
+  requirePackages("emoa", why = "multi-point InfillOpt MOI-MBO")
 
   n = control$propose.points
   objective = control$multipoint.moimbo.objective
@@ -135,6 +135,12 @@ proposePointsMOIMBO = function(opt.state, ...) {
     }
   }) # measureTime
   rownames(X) = NULL
-  prop.type = rep("infill_moimbo", n)
-  return(list(prop.points = X, propose.time = secs, crit.vals = Y, prop.type = prop.type, errors.model = NA_character_))
+
+  makeProposal(
+    control = control,
+    prop.points = X,
+    propose.time = secs,
+    crit.vals = Y,
+    prop.type = rep("infill_moimbo", n)
+  )
 }
