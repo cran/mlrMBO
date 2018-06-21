@@ -1,7 +1,8 @@
 ## ----setup, include = FALSE, cache = FALSE-------------------------------
 library(mlrMBO)
+library(rgenoud)
 set.seed(123)
-knitr::opts_chunk$set(cache = TRUE, collapse = FALSE, dev = "svg")
+knitr::opts_chunk$set(cache = TRUE, collapse = FALSE)
 knitr::knit_hooks$set(document = function(x){
   gsub("```\n*```r*\n*", "", x)
 })

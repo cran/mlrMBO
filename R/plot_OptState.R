@@ -26,15 +26,15 @@ plot.OptState = function(x, scale.panels = FALSE, ...) {
   par.count.numeric = sum(par.is.numeric)
   par.count.discrete = par.dim - par.count.numeric
   opt.path = getOptStateOptPath(opt.state)
-  design = convertOptPathToDf(opt.path, control)
   models = getOptStateModels(opt.state)$models
+  designs = getOptStateDesigns(opt.state)
   x.ids = getParamIds(par.set, repeated = TRUE, with.nr = TRUE)
   y.ids = control$y.name
   infill = control$infill.crit
 
   # the data we need to plot
   points = generateGridDesign(par.set, 100, trafo = TRUE)
-  infill.res = infill$fun(points = points, models = models, control = control, par.set = par.set, design = design, attributes = TRUE, iter = getOptStateLoop(opt.state))
+  infill.res = infill$fun(points = points, models = models, control = control, par.set = par.set, designs = designs, attributes = TRUE, iter = getOptStateLoop(opt.state))
 
   crit.components = attr(infill.res, "crit.components")
   if (!is.null(crit.components)) {
@@ -48,6 +48,8 @@ plot.OptState = function(x, scale.panels = FALSE, ...) {
   }
   colnames(plot.data)[1] = control$infill.crit$id
 
+  design = designs[[1]]
+
   # add types to points
   design$type = ifelse(getOptPathDOB(opt.path) == 0, "init", "seq")
 
@@ -59,7 +61,7 @@ plot.OptState = function(x, scale.panels = FALSE, ...) {
   # prepare data for ggplot2
   mdata = data.table::melt(plot.data, id.vars = x.ids)
   mdata$variable = factor(mdata$variable, levels = intersect(use.only.columns, levels(mdata$variable)))
-  if (scale.panels) {
+  if (scale.panels && par.dim == 2) {
     predict.range = range(mdata[get("variable")=="mean", "value"])
     mdata[, ':='("value", normalize(x = get("value"), method = "range")), by = "variable"]
     design[[y.ids]] = (design[[y.ids]] + (0 - predict.range[1])) / diff(predict.range)
@@ -82,7 +84,11 @@ plot.OptState = function(x, scale.panels = FALSE, ...) {
     } else {
       formula.txt = "~variable"
     }
-    g = g + ggplot2::facet_grid(as.formula(formula.txt))
+    if (scale.panels && par.dim == 1) {
+      g = g + ggplot2::facet_wrap(as.formula(formula.txt), nrow = 1, scales = "free_y")
+    } else {
+      g = g + ggplot2::facet_grid(as.formula(formula.txt))
+    }
   }
   g = g + ggplot2::scale_shape_manual(values = c(init = 16, seq = 15))
   g
