@@ -1,4 +1,4 @@
-fbdba19d72072753fb82c2830269d850 *DESCRIPTION
+fc9883322fd78adf7befc1a45a3bff03 *DESCRIPTION
 3383e1a74cddce4c1863f8623add40df *LICENSE
 094daa99873eccc77f701513e1e163e5 *NAMESPACE
 91743222b1708a161104374c6da838bd *NEWS.md
@@ -16,7 +16,7 @@ cfa5fe8bbe977840bdd865b398e24b16 *R/checkStuff.R
 771ce08b3568c31d8ff4ecac00081c8b *R/chooseFinalPoint.R
 a23958431abe38239232c935f6dc3b2e *R/convertToDesign.R
 5dce9f681bf8fb7a79595018b98791bf *R/doc_error_handling.R
-2d677299a7ebb627878f1afe618aa33a *R/doc_mbo_OptPath.R
+b1e8249951a5ce46030e709ca3e5d024 *R/doc_mbo_OptPath.R
 0fd45cf1c051af66210f9fc059908b41 *R/doc_mbo_parallel.R
 e2126fdf89becc6b8ab5fa3d6ff5aa92 *R/doc_mlrMBO_examples.R
 eeea1ec17170f18d65558ea029b80643 *R/evalFinalPoint.R
@@ -83,11 +83,11 @@ be0a45c502378089396a3f7223bbdb9e *R/trainModels.R
 645b6ac249eba86c8398f1c3f472cf49 *R/utils.R
 aaba67e3e82be7a86ea4ec780fa80003 *R/zzz.R
 8c1d9fb8737029997d68f83c7f6aa6db *README.md
-8e5a35652138c21ada797c349231a248 *build/vignette.rds
+59d46b7a15845f602b25e12c84b62887 *build/vignette.rds
 337c42dc6b43e1bdc35fccb031b92cba *inst/CITATION
 11f57f1751e5f9401573c642da5cdf07 *inst/doc/mlrMBO.R
 a4968396cdea053ec43d57f785ba1442 *inst/doc/mlrMBO.Rmd
-63a84d8794dd97cacd4aa9a4b08eaedc *inst/doc/mlrMBO.html
+756dcc27d7962ef390ba74b0570da359 *inst/doc/mlrMBO.html
 d342f641993fc990625928901c8203b1 *inst/examples/ex_1d_discrete_noisy.R
 df4ef2e8cf0570743816e636dda1e2d6 *inst/examples/ex_1d_noisy_numeric.R
 e5f42848625686a8c3478af0ab714b40 *inst/examples/ex_1d_numeric.R
@@ -120,7 +120,7 @@ b1fc31210367859426c3e8fe424948b0 *man/makeMBOTrafoFunction.Rd
 209f4ee3fb9b98282ab7196706b2db65 *man/mbo.Rd
 3557a495559e6d8446fc7e83824de2f3 *man/mboContinue.Rd
 48307d77460a8577d587c55db5edb35e *man/mboFinalize.Rd
-f2a05068318b4d0bc00725e3cf05e3b6 *man/mbo_OptPath.Rd
+2ad16e37e1dee035dbd962d4e4d92786 *man/mbo_OptPath.Rd
 170531d00bf5a068b71a4c82c12ed7be *man/mbo_parallel.Rd
 3d6b0483b83e62ef42f42093a2f7d223 *man/mlrMBO_examples.Rd
 943b0ad3f6f10c62426e8237a2e8e37b *man/plot.OptState.Rd
